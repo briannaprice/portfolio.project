@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content=device-width, intial-scale="1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <table class="text=center">
+        <caption class="text-center">My Weekly Schedule</caption>
+        <tr>
+            <th></th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+            <th>Saturday</th>
+            <th>Sunday</th>
+        </tr>
+        <tr>
+            <th>Morning</th>
+            <td id="class-table" colspan="5" rowspan="2">class</td>
+            <td>Sleeping</td>
+            <td>Sleeping</td>
+        </tr>
+        <tr>
+            <th>Afternoon</th>
+            <td>Working</td>
+            <td>Working</td>
+        </tr>
+        <tr>
+            <th>Night</th>
+            <td>Homework</td>
+            <td>Hanging with friends</td>
+            <td>Homework</td>
+            <td>Homework</td>
+            <td>Relaxing</td>
+            <td>Working</td>
+            <td>Working</td>
+        </tr>
+    </table>
+    <style>
+        td {
+            border: black 1px solid;
+            padding: 5px;
+        }
+
+        table {
+            border-spacing: 0px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        #class-table {
+            background-color: coral;
+        }
+        </style>
+    <form>
+        <fieldset>
+            <legend>Contact Information</legend>
+            <label for="email">Email: </label>
+            <input type="email" id="email" name="email" placeholder="brianna.price@midland.edu" />
+            <label for="phone">Phone Number: </label>
+            <input type="tel" id="phone" placeholder="4023504551" />
+            <label for="firstname">First Name:</label>
+            <input type="text" id="firstname" name="firstname" placeholder="Brianna" />
+            <br>
+            <label for="bestcontact">Best Contact Method</label>
+            <select id="bestcontact" name="bestcontact">
+                <option value="email">Email</option>
+                <option value="phone">Phone</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>Favorite Pet</legend>
+            <input type="radio" id="pet1" name="pet" value="cat" checked="checked">
+            <label for="pet1">Cat</label>
+
+            <input type="radio" id="pet2" name="pet" value="dog">
+            <label for="pet2">Dog</label>
+
+            <input type="radio" id="pet3" name="pet" value="bird">
+            <label for="pet3">Bird</label>
+        </fieldset>
+        <fieldset>
+            <legend>Cities</legend>
+            <h4>Favorite</h4>
+            <input type="checkbox" id="city1" name="city" value="Branson">
+            <label for="city1">Branson</label>
+
+            <input type="checkbox" id="city2" name="city" value="Clearwater">
+            <label for="city2">Clearwater</label>
+
+            <input type="checkbox" id="city3" name="city" value="Cancun" checked="checked">
+            <label for="city3">Cancun</label>
+
+
+            <h4>Interests</h4>
+            <select id="interests" name="interests" multiple>
+                <option value="videogames">Video Games</option>
+                <option value="pottery">Pottery</option>
+                <option value="hangingwithfriends">Hanging with friends</option>
+            </select>
+        </fieldset>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
