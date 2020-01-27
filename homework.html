@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cats!</title>
+    <link href="https://fonts.googleapis.com/css?family=Gelasio&display=swap" rel="stylesheet">
+</head>
+<style>
+    body{
+        font-family: 'Gelasio', serif;
+    }
+    .teal{
+        background-color: teal;
+        color: white;
+    }
+    .cyan{
+        background-color: cyan;
+        color: black;
+    }
+    .teal, .cyan{
+        min-height: 100px;
+        margin: 5px;
+    }
+    main{
+        flex-basis: calc(100% / 3 * 2);
+        display: flex;
+        flex-flow: row wrap;
+        font-size: 18px;
+    }
+    aside{
+        flex-basis: calc(100 / 3);
+        display: flex;
+        flex-direction: column;
+        font-size: 16px;
+        text-align: left;
+    }
+    header, footer{
+        width: 100%;
+        height: 30px;
+        background-color: black;
+        color: white;
+        font-size: 24px;
+    }
+    main, header, footer{
+        text-align: center;
+    }
+    .page_Container{
+        width: 100%;
+        display: flex;
+        background-color: grey;
+    }
+    .order1{
+        order: 1;
+    }
+    .order2{
+        order: 2;
+    }
+    .order3{
+        order: 3;
+    }
+    .order4{
+        order: 4;
+    }
+</style>
+<body>
+    <header>Facts you didn't know about cats</header>
+    <div class="page_Container">
+    <main>
+        <div class="teal order-1">Did you know that in North America there are actually more cats then dogs? 
+            There are around 73 million domesticated cats, compared to 63 million dogs.
+        </div>
+        <div class="teal order-2">Cats make up to 100 different noises. 
+            They have four options for communicating: meowing, purring, growling, or hissing. 
+            Since they make 100 noises, that means they 25 diffent versions of each form</div>
+        <div class="teal order-4">A scientific proven fact is that cats respond better to women than men. 
+            One reason is because women have softer voices. 
+            Additionally they prefer women more, because women and cats have similar personality traits.</div>
+        <div class="teal order-3">Ancient Egyptains used to shave their eyebrows when the family cat died. 
+            They would also throw a party where they would drink wine and beat their chests. 
+            They would then embalm the cat, and either place it in the family tomb or a pet cemetery.</div>
+        <div class="teal order-1">One sad fact about cats: In 1888, more than 300,000 mummified cats were found in an Egyptain cemetery. 
+            They were stripped of their wrappings and carted off to be used by farmers in England and the U.S. for fertilizer.</div>
+        </div>
+    </main>
+    <aside>
+        <div class="page_Container">
+        <div class="cyan order-1">The most popular breed in America is the exotic cat.
+            Exotic cats are known for their teddy bear appearance. They have been ranked number 1 for 3 years now.
+        </div>
+        <div class="cyan order-2">facts about second popular breed</div>
+        <div class="cyan order-3">facts about third popular breed</div>
+    </div>
+    </aside>
+    <footer>Cute kittens</footer>
+</body>
+</html>
