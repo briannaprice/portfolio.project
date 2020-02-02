@@ -1,0 +1,12 @@
+body{
+    background-color: cornflowerblue;
+    padding: 10px;
+    display: flex;
+}
+main{
+    background-color: darkblue;
+    color: white;
+    max-width: 10px;
+    max-height: 10px;
+    align-content: left;
+}
