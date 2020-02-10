@@ -10,8 +10,15 @@
 <body>
     <h1>API search</h1>
     <main>
-        <label for="search">Search for Place here</label><input type="text" id="search"></input>
-        <label for="type">Type</label><input type="text" id="search"></input>
+        <label for="type">Type here</label><input type="text" id="type"></input>
+        <label for="select">Select one</label>
+        <select>
+            <option value="opt1">Country</option>
+            <option value="opt2">State</option>
+            <option value="opt3">City</option>
+            <option value="opt4">Town</option>
+        </select>
+        <div class="col-12 col-md-3"><button class="btn btn-light" id="searchit">Search</button></div>
     </main>
     <script href="./searchable.ts"></script>
 </body>

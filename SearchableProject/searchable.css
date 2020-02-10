@@ -8,5 +8,11 @@ main{
     color: white;
     max-width: 10px;
     max-height: 10px;
-    align-content: left;
+    font-size: 12px;
+}
+button{
+    background-color: white;
+    color: black;
+    max-height: 30px;
+    width: 50px;
 }

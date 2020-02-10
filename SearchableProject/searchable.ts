@@ -1,6 +1,6 @@
-document.getElementById('').addEventListener("click", function(){
+document.getElementById('search').addEventListener("click", function(){
     let search = document.getElementById("search")["value"]
-    fetch(`http://www.`)
+    fetch(`http://maps.googleapis.com/maps/api/js?key=AIzaSyBezeHTW869CMZEa8G6XDSpIXyrlmI5zRk&callback=initMap`)
     .then(function (response){
         console.log(response.body)
         return response.json()
@@ -22,4 +22,5 @@ document.getElementById('').addEventListener("click", function(){
             document.getElementById("places").innerText = "No Place Found"
         }
     })
+    
 })
