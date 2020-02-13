@@ -1,1 +1,23 @@
-<p>todo works!</p>
+<label for="name">Todo Name</label>
+<input [(ngModel)]="name" type="text" id="name">
+<br>
+<br>
+<label for="user">Username</label>
+<input [(ngModel)]="user" type="text" id="user">
+<br>
+<br>
+<button (click)="addTodo()">Add Todo</button>
+<br>
+<br>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Todo Name</th>
+        <th>Username</th>
+    </tr>
+    <tr *ngFor="let toDO of toDos">
+        <td>{{toDo.id}}</td>
+        <td>{{toDo.name}}</td>
+        <td><a [routerLink]="['/user/' + toDo.user]">{{toDo.user}}</a></td>
+    </tr>
+</table>
