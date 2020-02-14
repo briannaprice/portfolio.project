@@ -1,43 +1,38 @@
 import { Injectable } from '@angular/core';
+import { Todo } from '../interfaces/todo.interface';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
-  private toDos: Object[] = [
-    {id: 1, completed: false, title: 'Wash the dog', username: 'Mike'},
-    {id: 2, completed: false,title: 'Wash the cat', username: 'Mike'},
-    {id: 3, completed: true, title: 'Wash the elephant', username: 'John'},
-    {id: 4, completed: false, title: 'Wash the horse', username: 'Mike'},
-    {id: 5, completed: false, title: 'Wash the rhino', username: 'John'}
+  private toDos : Todo[] = [
+    {id: 1, name: 'Wash the dog', user: 'Mike', completed: false},
+    {id: 2, name: 'Buy groceries', user: 'Mike', completed: false},
+    {id: 3, name: 'Pick up kids from school', user: 'John', completed: false},
+    {id: 4, name: 'Cook dinner', user: 'Mike', completed: false},
+    {id: 5, name: 'Wash the rhino', user: 'John', completed: false},
   ]
-  private nextId: number = 6;
+  nextId: number = 6;
   constructor() { }
 
-  getAllTodos(){
-    return this.toDos
-  }
-
-  getTodosByUsername(uName){
-    return this.toDos.filter(todo => todo['username'] === uName)
-  }
-
-  addTodo(uName, todoTitle){
-    let newTodo = {
-      id: this.nextId,
-      title: todoTitle,
-      username: uName,
-      completed: false
-    }
+  addTodo(uName: string, toDoName: string){
+    let newTodo : Todo = {name: toDoName, user: uName, id: this.nextId, completed: false}
     this.nextId++;
     this.toDos.push(newTodo);
   }
-  deleteTodo(id){
-    let idx = this.toDos.findIndex(todo => todo['id'] === id);
-    this.toDos.splice(idx, 1);
+  
+  toDosByUsername(username: string){
+    return this.toDos.filter(todo => todo.user === username)
   }
-  markTodo(id){
-    let idx = this.toDos.findIndex(todo => todo['id'] === id);
-    this.toDos[idx]['completed'] = !this.toDos[idx]['completed']
+
+  get allToDos(): Todo[]{
+    return [...this.toDos]
   }
+
+  deleteTodo(id: number){
+    let index = this.toDos.findIndex(todo => todo.id === id)
+    this.toDos.splice(index, 1)
+  }
+
 }

@@ -1,22 +1,25 @@
-<h3>Todos</h3>
-<div>
-    <label for="search">Search Todos:</label><input id="search" placeholder="Query" [(ngModel)]="search">
+<form class="container">
+    <div class="form-group">
+        <label for="filter">Filter:</label>
+        <input class="form-control" id="filter" type="text" [(ngModel)]="filterInput" name="filter">
+    </div>
+</form>
+<div class="container">
+    <table class="table">
+        <tr class="text-center">
+            <th *ngIf="isUserRoute">Delete</th>
+            <th (click)="changeSort('id')">Id</th>
+            <th (click)="changeSort('name')">ToDo Name</th>
+            <th *ngIf="!isUserRoute" (click)="changeSort('user')">Username</th>
+            <th (click)="changeSort('completed')">Completed</th>
+        </tr>
+        <tr class="text-center" *ngFor="let toDo of toDos | filter:filterInput | sort:sortBy" [class.completed]="toDo.completed">
+            <td *ngIf="isUserRoute"><input type="checkbox" [(ngModel)]="toDo.markedForDeletion"></td>
+            <td>{{toDo.id}}</td>
+            <td>{{toDo.name}}</td>
+            <td *ngIf="!isUserRoute"><a [routerLink]="['/user/' + toDo.user]">{{toDo.user}}</a></td>
+            <td><input type="checkbox" [(ngModel)]="toDo.completed"></td>
+        </tr>
+    </table>
+    <button class="btn btn-danger" *ngIf="isUserRoute" (click)="deleteTodos()">Delete</button>
 </div>
-
-<table>
-    <tr>
-        <th (click)="sort = 'id'">Id</th>
-        <th (click)="sort = 'title'">Title</th>
-        <th (click)="sort = 'username'">Username</th>
-        <th (click)="sort = 'completed'">Completed</th>
-        <th></th>
-    </tr>
-    <tr *ngFor="let todo of todoList | filter:search | sort:sort" [class.completed]="todo.completed">
-        <td>{{todo.id}}</td>
-        <td>{{todo.title}}</td>
-        <td><a [routerLink]="['/user/' + todo.username">{{todo.username}}</a></td>
-        <td style="text-align: center;"><input (click)="markTodo(todo.id)" type="checkbox" [(ngModel)]="todo.completed"></input></td>
-        <td><input type="checkbox" [(ngModel)]="toDo.completed"></td>
-    </tr>
-</table>
-<button class="btn btn-danger" *ngIf="isUserRoute" (click)="deleteTodos()">Delete</button>

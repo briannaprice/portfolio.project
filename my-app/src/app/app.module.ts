@@ -5,8 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodoComponent } from './todo/todo.component';
 import { UserComponent } from './user/user.component';
-import { FilterPipe } from './filter.pipe';
-import { TodolistComponent } from './todolist/todolist.component';
+import { FilterPipe } from './pipe/filter.pipe';
+import { TodoListComponent } from './todolist/todolist.component';
+import { MouseDirective } from './directives/mouse.directive';
+import { BirthdayDirective } from './directives/birthday.directive';
+import { LoginComponent } from './login/login.component';
+import { Interfaces } from './interfaces/todo.interface'
 
 @NgModule({
   declarations: [
@@ -14,7 +18,11 @@ import { TodolistComponent } from './todolist/todolist.component';
     TodoComponent,
     UserComponent,
     FilterPipe,
-    TodolistComponent,
+    TodoListComponent,
+    MouseDirective,
+    BirthdayDirective,
+    LoginComponent,
+    Interfaces,
   ],
   imports: [
     BrowserModule,

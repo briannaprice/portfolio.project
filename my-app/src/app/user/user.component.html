@@ -1,23 +1,11 @@
-<a [routerLink]="['/todo']">Back to Todos</a>
+<h1 class="text-center">Todos for {{username}}</h1>
+<div class="text-center mb-4"><a [routerLink]="['/todo']">Back to All Todos</a></div>
+<form class="container mb-4 border-bottom">
+    <div class="form-group">
+        <label for="user">Todo Name</label>
+        <input class="form-control" [(ngModel)]="name" type="text" id="user" name="name">
+    </div>
+    <button class="btn btn-success mb-2" (click)="addTodo()">Add Todo</button>
+</form>
 
-Welcome {{username}}!
-<label for="name">ToDo Name</label>
-<input [(ngModel)]="name" type="text" id="name">
-<br>
-<br>
-<button (click)="addTodo()">Add Todo</button>
-<br>
-<br>
-<table>
-    <tr>
-        <th>Id</th>
-        <th>ToDo Name</th>
-        <th>Delete</th>
-    </tr>
-    <tr *ngFor="let toDo of toDos">
-        <td>{{toDo.id}}</td>
-        <td>{{toDo.name}}</td>
-        <td><input type="checkbox" [(ngModel)]="toDo.markedForDeletion"></td>
-    </tr>
-</table>
-<button (click)="deleteTodos()">Delete</button>
+<app-todo-list [toDos]="toDos" (deleteEvent)="deleteTodos()"></app-todo-list>

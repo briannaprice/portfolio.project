@@ -1,28 +1,32 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
-import { EventEmitter } from 'protractor';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Todo } from '../interfaces/todo.interface';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-todolist',
-  templateUrl: './todolist.component.html',
-  styleUrls: ['./todolist.component.scss']
+  selector: 'app-todo-list',
+  templateUrl: './todo-list.component.html',
+  styleUrls: ['./todo-list.component.scss']
 })
-export class TodolistComponent implements OnInit {
-  @Input() todoList: Object[];
-  @Output() markEvent = new EventEmitter()
-  @Output() deleteEvent = new EventEmitter()
-  search: string = ""
-  sort: string = "id"
-  constructor() { }
-
-  markTodo(id){
-    this.markEvent.emit(id);
+export class TodoListComponent implements OnInit {
+  filterInput: string = '';
+  sortBy: string = 'id';
+  @Input()  toDos: Todo[];
+  @Output() deleteEvent = new EventEmitter<void>()
+  isUserRoute: boolean;
+  constructor(private actr: ActivatedRoute) { 
+    this.isUserRoute = this.actr.snapshot.url[0].path === 'user'
+  
   }
 
-  deleteTodo(id){
-    this.deleteEvent.emit(id);
+  deleteTodos(){
+    this.deleteEvent.emit();
   }
 
-  ngOnInit(){
+  changeSort(sort){
+    this.sortBy = sort;
+  }
+
+  ngOnInit(): void {
   }
 
 }

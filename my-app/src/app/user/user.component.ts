@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo } from '../interfaces/todo.interfaces';
-import { TodoService } from '../services/todo.service';
+import { Todo } from '../interfaces/todo.interface';
+import { TodoService } from '../todo/todo.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -14,19 +14,23 @@ export class UserComponent implements OnInit {
   username: string;
   constructor(private todoService: TodoService, 
     private actr: ActivatedRoute) {
-
-      }
+        
+     }
 
   addTodo(){
-    if(this.name.length > 0 ){
+    if(this.name.length > 0){
       this.todoService.addTodo(this.username, this.name)
-      this.toDos = this.todoService.toDosByUsername(this.name)
+      this.toDos = this.todoService.toDosByUsername(this.username)
     }
+
   }
+
   deleteTodos(){
-    this.toDos.filter(t => t.markedForDeletion).forEach(td=> this.todoService.deleteTodo(td.id));
+    this.toDos.filter(t=> t.markedForDeletion).forEach(td=> this.todoService.deleteTodo(td.id));
     this.toDos = this.todoService.toDosByUsername(this.username);
+
   }
+
   ngOnInit(): void {
     this.username = this.actr.snapshot.params.username
     this.toDos = this.todoService.toDosByUsername(this.username);

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoService } from './todo.service';
+import { Todo } from '../interfaces/todo.interface';
+import { TodoService } from '../services/todo.service';
 
 @Component({
   selector: 'app-todo',
@@ -7,26 +8,27 @@ import { TodoService } from './todo.service';
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent implements OnInit {
-  username: string = "";
-  title: string = "";
-  todoList: Object[] = [];
-  constructor(private todoService: TodoService){
-    this.todoList = todoService.getAllTodos()
+  toDos: Todo[];
+  user: string;
+  name: string;
+  constructor(private todoService: TodoService) { 
+    this.toDos = this.todoService.allToDos
   }
-  removeTodo(id){
-    this.todoService.deleteTodo(id);
-    this.todoList = [...this.todoService.getAllTodos()]
-  }
-  createTodo(id){
-    this.todoService.addTodo(this.username, this.title);
-    this.todoList = [...this.todoService.getAllTodos()]
-  }
-  markTodo(id){
-    this.todoService.markTodo(id);
-    this.todoList = [...this.todoService.getAllTodos()]
+  addTodo(){
+    if(this.user.length > 0 && this.name.length > 0){
+      this.todoService.addTodo(this.user, this.name);
+      this.toDos = this.todoService.allToDos
+    }
   }
 
-  ngOnInit(){
+  deleteTodos(){
+    this.toDos.filter(t=> t.markedForDeletion).forEach(td=> this.todoService.deleteTodo(td.id));
+    this.toDos = this.todoService.allToDos;
+
+  }
+
+  ngOnInit(): void {
+    
   }
 
 }
