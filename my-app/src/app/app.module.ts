@@ -10,7 +10,6 @@ import { TodoListComponent } from './todolist/todolist.component';
 import { MouseDirective } from './directives/mouse.directive';
 import { BirthdayDirective } from './directives/birthday.directive';
 import { LoginComponent } from './login/login.component';
-import { Interfaces } from './interfaces/todo.interface'
 
 @NgModule({
   declarations: [
@@ -22,11 +21,10 @@ import { Interfaces } from './interfaces/todo.interface'
     MouseDirective,
     BirthdayDirective,
     LoginComponent,
-    Interfaces,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
