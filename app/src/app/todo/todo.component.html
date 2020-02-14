@@ -1,0 +1,23 @@
+<label for="name">ToDo Name</label>
+<input [(ngModel)]="name" type="text" id="name">
+<br>
+<br>
+<label for="user">UserName</label>
+<input [(ngModel)]="user" type="text" id="user">
+<br>
+<br>
+<button (click)="addTodo()">Add Todo</button>
+<br>
+<br>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>ToDo Name</th>
+        <th>Username</th>
+    </tr>
+    <tr *ngFor="let toDo of toDos">
+        <td>{{toDo.id}}</td>
+        <td>{{toDo.name}}</td>
+        <td><a [routerLink]="['/user/' + toDo.user]">{{toDo.user}}</a></td>
+    </tr>
+</table>
