@@ -8,6 +8,7 @@ import { UserComponent } from './user/user.component';
 import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { TodoListComponent } from './todo-list/todo-list.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TodoListComponent } from './todo-list/todo-list.component';
     UserComponent,
     FilterPipe,
     SortPipe,
-    TodoListComponent
+    TodoListComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
