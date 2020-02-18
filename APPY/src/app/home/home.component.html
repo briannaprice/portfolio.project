@@ -1,1 +1,8 @@
-<p>home works!</p>
+<select [(ngModel)]="path">
+    <option value="user">User</option>
+    <option value="post">Post</option>
+</select>
+<br>
+<input [(ngModel)]="userPostId" placeholder="Enter Id" name="id" type="text">
+<br>
+<button (click)="redirect()">Go</button>
