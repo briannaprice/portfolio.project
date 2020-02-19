@@ -1,1 +1,14 @@
-<p>search works!</p>
+<h1 class="text-center">Giphy Search</h1>
+
+<div class="text-center margin-auto">
+    <mat-form-field class="example-full-width">
+        <mat-label>Gif Search</mat-label>
+        <input matInput placeholder="Search Query" id="searchField">
+    </mat-form-field>
+</div>
+
+<div class="flex-container">
+    <div class="gif-container" *ngFor="let gif of gifs">
+        <img class="gif margin-auto" [src]="gif.images.original.url">
+    </div>
+</div>
