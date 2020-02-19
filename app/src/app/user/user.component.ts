@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../interfaces/todo';
-import { TodoService } from '../services/todo.service';
+import { TodoStoreService } from '../services/todo.service';
 import { ActivatedRoute } from '@angular/router'
 
 @Component({
@@ -12,7 +12,7 @@ export class UserComponent implements OnInit {
   toDos: Todo[];
   name: string;
   username: string;
-  constructor(private todoService: TodoService, 
+  constructor(private todoService: TodoStoreService, 
     private actr: ActivatedRoute) {
   }
 

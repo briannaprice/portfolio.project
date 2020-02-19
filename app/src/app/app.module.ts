@@ -9,8 +9,6 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { LoginComponent } from './login/login.component';
-import { OpenCloseComponent } from './open-close/open-close.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -20,14 +18,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FilterPipe,
     SortPipe,
     TodoListComponent,
-    LoginComponent,
-    OpenCloseComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
-    BrowserAnimationsModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
