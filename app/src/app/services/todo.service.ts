@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Todo } from '../interfaces/todo';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -30,11 +31,13 @@ export class TodoStoreService {
   addTodo(uName: string, toDoName: string){
     let newTodo : Todo = {name: toDoName, user: uName, id: this.nextId, completed: false}
     this.nextId++;
-    this.todos.push(newTodo);
+    this.todos = [...this.todos, newTodo];
   }
   
-  toDosByUsername(username: string){
-    return this.todos.filter(todo => todo.user === username)
+  toDosByUsername(username: string): Observable<Todo[]>{
+    return this.todos$.pipe(
+      map((todos : Todo[]) => todos.filter(todo => todo.user === username))
+    )
   }
 
   get allToDos(): Todo[]{
@@ -42,8 +45,7 @@ export class TodoStoreService {
   }
 
   deleteTodo(id: number){
-    let index = this.todos.findIndex(todo => todo.id === id)
-    this.todos.splice(index, 1)
+    this.todos = this.todos.filter(todo => todo.id !== id)
   }
 
 }

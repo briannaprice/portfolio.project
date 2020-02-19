@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router'
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
+  [x: string]: any;
   toDos: Todo[];
   name: string;
   username: string;
@@ -19,20 +20,20 @@ export class UserComponent implements OnInit {
   addTodo(){
     if(this.name.length > 0){
       this.todoService.addTodo(this.username, this.name)
-      this.toDos = this.todoService.toDosByUsername(this.username)
+      this.todos = this.todoService.toDosByUsername(this.username)
     }
 
   }
 
   deleteTodos(){
-    this.toDos.filter(t=> t.markedForDeletion).forEach(td=> this.todoService.deleteTodo(td.id));
-    this.toDos = this.todoService.toDosByUsername(this.username);
+    this.todos.filter(t=> t.markedForDeletion).forEach(td=> this.todoService.deleteTodo(td.id));
+    this.todos = this.todoService.toDosByUsername(this.username);
 
   }
 
   ngOnInit(): void {
     this.username = this.actr.snapshot.params.username
-    this.toDos = this.todoService.toDosByUsername(this.username);
+    this.todos = this.todoService.toDosByUsername(this.username);
   }
 
 }
