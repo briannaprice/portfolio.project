@@ -1,8 +1,7 @@
 import { Component, OnInit, Query } from '@angular/core';
 import { GifService } from '../services/gif.service';
 import { fromEvent } from 'rxjs';
-import { map } from 'rxjs/internal/operators/map';
-import { filter, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { map, filter, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',

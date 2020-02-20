@@ -3,5 +3,6 @@ export interface Todo {
     user: string,
     id: number,
     completed: boolean,
-    markedForDeletion?: boolean
+    markedForDeletion?: boolean,
+    dueDate?: number
 }

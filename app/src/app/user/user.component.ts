@@ -17,10 +17,9 @@ export class UserComponent implements OnInit {
     private actr: ActivatedRoute) {
   }
 
-  addTodo(){
+  addTodo(){ 
     if(this.name.length > 0){
       this.todoService.addTodo(this.username, this.name)
-      this.todos = this.todoService.toDosByUsername(this.username)
     }
 
   }
@@ -33,7 +32,8 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.username = this.actr.snapshot.params.username
-    this.todos = this.todoService.toDosByUsername(this.username);
+    this.todos = this.todoService.toDosByUsername(this.username).subscribe(todos => this.toDos = todos);
+
   }
 
 }
