@@ -7,9 +7,9 @@ import { UserGuard } from './guards/user.guard';
 
 
 const routes: Routes = [
-  {path: 'todo', component: TodoComponent, canActivate: [UserGuard]},
-  {path: 'user/:username', component: UserComponent, canActivate: [UserGuard]},
-  {path: 'login', component: LoginComponent},
+  {path: 'todo', component: TodoComponent, canActivate: [UserGuard], data: {animation: 'todo'}},
+  {path: 'user/:username', component: UserComponent, canActivate: [UserGuard], data: {animation: 'user'}},
+  {path: 'login', component: LoginComponent, data: {animation: 'login'}},
   {path: '**', redirectTo: '/login'}
 ];
 

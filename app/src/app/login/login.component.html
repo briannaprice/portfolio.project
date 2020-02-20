@@ -1,12 +1,26 @@
-<h2 class="text-center mt-4">Welcome to ToDo App</h2>
-<form class="container">
-    <div class="form-group">
-      <label for="username">Username</label>
-      <input [(ngModel)]="username" type="text" class="form-control" id="username" name="password">
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input [(ngModel)]="password" type="password" class="form-control" id="password" name="password">
-    </div>
-    <button (click)="login()" class="btn btn-primary">Submit</button>
-  </form>
+<mat-toolbar>
+  <span>Todos</span>
+</mat-toolbar>
+
+<form class="login-form" role="form" (ngSubmit)="login($event)" [formGroup]="loginForm">
+  <mat-form-field class="input">
+  <input matInput formControlName="username" type="text" name="username" placeholder="Username">
+    <mat-hint>Username must be between 3 and 16 characters</mat-hint>
+    <mat-error *ngIf="loginForm.controls.username.errors && (loginForm.controls.username.dirty || loginForm.controls.username.touched)">
+        Invalid username - must be between 3 and 16 Characters  
+    </mat-error>
+  </mat-form-field>
+  <br>
+
+  <mat-form-field class="input">
+    <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" name="password" placeholder="Password">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+    <mat-hint>Password must be between 8 and 128 characters</mat-hint>
+    <mat-error *ngIf="loginForm.controls.password.errors && (loginForm.controls.password.dirty || loginForm.controls.password.touched)">
+        Password must be between 8 and 128 characters
+    </mat-error>
+  </mat-form-field>
+  <button class="login-button" mat-raised-button [color]="loginForm.valid ? 'primary' : 'warn'" [disabled]="!loginForm.valid && !loginForm.touched">Login</button>
+</form>

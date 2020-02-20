@@ -28,8 +28,8 @@ export class TodoStoreService {
     this._todos.next(val);
   }
 
-  addTodo(uName: string, toDoName: string){
-    let newTodo : Todo = {name: toDoName, user: uName, id: this.nextId, completed: false}
+  addTodo(uName: string, toDoName: string, dueDate: Date){
+    let newTodo : Todo = {name: toDoName, user: uName, id: this.nextId, completed: false, dueDate: dueDate}
     this.nextId++;
     this.todos = [...this.todos, newTodo];
   }

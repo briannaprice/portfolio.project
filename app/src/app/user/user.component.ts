@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../interfaces/todo';
 import { TodoStoreService } from '../services/todo.service';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute } from '@angular/router';
+import { UserStoreService } from '../services/user.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
@@ -10,30 +12,37 @@ import { ActivatedRoute } from '@angular/router'
 })
 export class UserComponent implements OnInit {
   [x: string]: any;
-  toDos: Todo[];
-  name: string;
+  toDos: Todo[] = [];
+  todoForm: FormGroup
   username: string;
   constructor(private todoService: TodoStoreService, 
-    private actr: ActivatedRoute) {
+    private actr: ActivatedRoute, private userService: UserStoreService, private fb: FormBuilder) {
   }
 
-  addTodo(){ 
-    if(this.name.length > 0){
-      this.todoService.addTodo(this.username, this.name)
+  logout(){
+    this.userService.logout()
+  }
+
+  addTodo(e){ 
+    e.preventDefault()
+    if(this.todoForm.valid){
+      this.todoService.addTodo(this.username, this.todoForm.value.name, this.todoForm.value.dueDate)
     }
 
   }
 
   deleteTodos(){
-    this.todos.filter(t=> t.markedForDeletion).forEach(td=> this.todoService.deleteTodo(td.id));
-    this.todos = this.todoService.toDosByUsername(this.username);
+    this.toDos.filter(t=> t.markedForDeletion).forEach(td=> this.todoStore.deleteTodo(td.id));
 
   }
 
   ngOnInit(): void {
     this.username = this.actr.snapshot.params.username
     this.todos = this.todoService.toDosByUsername(this.username).subscribe(todos => this.toDos = todos);
-
+    this.todoForm = this.fb.group({
+      name: ['', Validators.compose([Validators.required])],
+      dueDate: ['', Validators.compose([Validators.required])]
+    })
   }
 
 }
